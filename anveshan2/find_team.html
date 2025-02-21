@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Team - Anveshan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <h1>Anveshan</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#events">Events</a></li>
+            <li><a href="index.html#startups">Startups</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Interest Selection Section -->
+    <section class="interest-selection">
+        <h2>Select Your Interests</h2>
+        <form id="interestForm">
+            <label><input type="checkbox" name="interests" value="AI"> AI</label>
+            <label><input type="checkbox" name="interests" value="Healthcare"> Healthcare</label>
+            <label><input type="checkbox" name="interests" value="Education"> Education</label>
+            <label><input type="checkbox" name="interests" value="Sustainability"> Sustainability</label>
+            <label><input type="checkbox" name="interests" value="Finance"> Finance</label>
+            <button type="button" onclick="findMatches()">Find Matches</button>
+        </form>
+    </section>
+
+    <!-- Match Results Section -->
+    <section id="matchResults" class="match-results" style="display:none;">
+        <h2>Matched Profiles</h2>
+        <div id="resultsContainer" class="cards-container"></div>
+    </section>
+
+    <script>
+        const sampleProfiles = [
+            { name: 'John Doe', interests: ['AI', 'Healthcare'], score: 85 },
+            { name: 'Jane Smith', interests: ['Education', 'Sustainability'], score: 90 },
+            { name: 'Mike Johnson', interests: ['Finance', 'AI'], score: 78 },
+            { name: 'Emily Davis', interests: ['Sustainability', 'Healthcare'], score: 88 }
+        ];
+
+        function findMatches() {
+            const selectedInterests = Array.from(document.querySelectorAll('input[name="interests"]:checked')).map(el => el.value);
+            const resultsContainer = document.getElementById('resultsContainer');
+            resultsContainer.innerHTML = '';
+
+            const matchedProfiles = sampleProfiles
+                .map(profile => {
+                    const matchScore = profile.interests.filter(interest => selectedInterests.includes(interest)).length * 50;
+                    return { ...profile, matchScore };
+                })
+                .filter(profile => profile.matchScore > 0)
+                .sort((a, b) => b.matchScore - a.matchScore);
+
+            matchedProfiles.forEach(profile => {
+                const profileCard = document.createElement('div');
+                profileCard.className = 'card';
+                profileCard.innerHTML = `
+                    <h3>${profile.name}</h3>
+                    <p>Interests: ${profile.interests.join(', ')}</p>
+                    <p>Compatibility Score: ${profile.matchScore}%</p>
+                    <button>Collaborate</button>
+                `;
+                resultsContainer.appendChild(profileCard);
+            });
+
+            document.getElementById('matchResults').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

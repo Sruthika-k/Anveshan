@@ -1,0 +1,117 @@
+/* styles.css */
+
+/* Basic Styling with Consistent #6x8f7d Olive Green Theme */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f6f6f6;
+    color: #333;
+}
+
+/* Navbar with Olive Green Theme */
+nav {
+    background-color: #6c8f7d;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav h1 {
+    margin: 0;
+    font-size: 2rem;
+    margin-right: 30px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    transition: background 0.3s, border-radius 0.3s;
+}
+
+nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+/* Section Styling */
+section {
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: 80px auto;
+    text-align: left;
+}
+
+h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    color: #6c8f7d;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #000; /* Black text for landing page */
+}
+
+/* Cards Styling */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-bottom: 60px;
+}
+
+.card h3 {
+    font-size: 24px;
+    color: #6c8f7d;
+}
+
+button {
+    background-color: #6c8f7d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #567063;
+    transform: translateY(-2px);
+}
+
+/* AI Team Finder Section */
+.ai-team-finder {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #d8e2dc;
+    border-radius: 15px;
+}
